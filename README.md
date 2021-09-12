@@ -19,7 +19,7 @@ A chess game made through Pygame and Scikit-learn. Main focus of the coursework 
 
 Capital letters are white pieces, rest are black pieces 
 
-(p = pawn, q = queen, r = rook, k = king, n = knight, b = bishop)
+**(P = pawn, Q = queen, R = rook, K = king, N = knight, B = bishop)**
 
 Green squares notifies the player where the piece can move,the blue square is the place "suggested"  by the algorithm.
 
