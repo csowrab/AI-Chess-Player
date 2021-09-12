@@ -17,7 +17,7 @@ A chess game made through Pygame and Scikit-learn. Main focus of the coursework 
 
 ![In-Game screenshot](/Screenshots/HelperDemo.jpeg)
 
-**(P = pawn, Q = queen, R = rook, K = king, N = knight, B = bishop)**
+**(P = Pawn, Q = Queen, R = Rook, K = King, N = Knight, B = Bishop)**
 
 * Capital letters are white pieces, others are black pieces. 
 * Green squares notifies the player where the piece can move.
