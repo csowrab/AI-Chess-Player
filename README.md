@@ -6,6 +6,14 @@ A chess game made through Pygame and Scikit-learn. Main focus of the coursework 
 "AiChessGame" is the actual python file, running this (along with its import dependencies) should run the game.
 "MLP_NET" JSON files are the actual AIs, each of different difficulties to load to the game.
 
+## Requirements:
+
+1. Python version 3.0 or above.
+2. [Pygame](https://pypi.org/project/pygame/)
+3. [Scikit-learn](https://pypi.org/project/scikit-learn/) (please use version 0.23.1 or below)
+4. [pickleshare](https://pypi.org/project/pickleshare/)
+5. [python-chess](https://pypi.org/project/chess/)
+
 ## Demo:
 
 ### Mid-game Explanation:
