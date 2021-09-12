@@ -5,9 +5,11 @@ import chess
 import pickle
 from pygame.locals import *
 
+# Pieces of the board
 UPPER = "RNBKQP"
 LOWER = "rnbkqp"
 
+# Sets up board and its pieces at start.
 def Board_creation():
     FEN_line = board.fen()
     Arr = []
@@ -26,17 +28,20 @@ def Board_creation():
             Row.append(each)
 
     return Arr
- 
+
+# Used to write characters (pieces) on the board.
 def text_objects(text, font, color):
     textSurface = font.render(text, True, color)
     return textSurface, textSurface.get_rect()
 
+# Works out the end-position, and translates it to py-chess game.
 def Work_out(end_position):
     column_name = ['a','b','c','d','e','f','g','h']
     row = 8 - int(end_position[1])
     column = column_name.index(end_position[0])
     return row, column
 
+# Draws the board to the current state
 def Draw_board(Drag = False, Moves_to_shade = [], Helper_move = ""):# Some values are set to default, they are used only when the user needs to.
     BOARD2 = Board_creation() # BOARD2 will store the current positions of the board,
 
@@ -116,8 +121,8 @@ def Draw_board(Drag = False, Moves_to_shade = [], Helper_move = ""):# Some value
         r = 0
         column = 0
 
-    
-def main(AI_is_white, BOARD2):#main function where the chess-board is displayed, along with allowing the user to click on squares
+# Main function where the chess-board is displayed, along with allowing the user to click on squares  
+def main(AI_is_white, BOARD2):
 
     intro = True
     gameDisplay.fill(white)
@@ -228,15 +233,14 @@ def main(AI_is_white, BOARD2):#main function where the chess-board is displayed,
                             Helper_on = False
                             pygame.display.update()
 
-            #TextRect.center = ((mouse[0]),(mouse[1]))
-            #gameDisplay.blit(TextSurf, TextRect)
+
             pygame.display.update()
             
-        #gameDisplay.blit(TextSurf, TextRect)
-        #pygame.display.update()
+
         clock.tick(15)
 
-def Make_move(board, AI_is_white, move): #This function distinguishes between a move made by the AI or move made by the user.
+# Distinguishes between a move made by the AI or move made by the user.
+def Make_move(board, AI_is_white, move): 
     if board.turn == AI_is_white:
         Best_move = Trials(board, AI_is_white, clf)
         board.push(Best_move)
@@ -244,18 +248,8 @@ def Make_move(board, AI_is_white, move): #This function distinguishes between a 
         BOARD2 = Board_creation()
         Draw_board()
         pygame.display.update()
-        #display(chess.svg.board(board=board))
-        #Drawing(board.fen())
 
     else:
-        #display(chess.svg.board(board=board))
-        #choice = move
-        #print("")
-        #print("")
-        #print("Select a move:")
-        #print("")
-        #for each in board.legal_moves:
-          #  print(each)
 
         Done = False
         choice = move
@@ -285,14 +279,9 @@ def Make_move(board, AI_is_white, move): #This function distinguishes between a 
             return add
         else:
             return ""
-        #display(chess.svg.board(board=board))
-        #Drawing(board.fen())
 
-    # else:
-    # Best_move = Trials_F(board)
-    # board.push(Best_move)
-
-def Trials(board, turn, clf): #This is where the AI chooses the best move from the list.
+# This is where the AI chooses the best move from the list.
+def Trials(board, turn, clf): 
     Cboard = board # A copy of the current board is made.
     highest = 0
     index = None
@@ -315,6 +304,7 @@ def Trials(board, turn, clf): #This is where the AI chooses the best move from t
     #print(index)
     return index
 
+# Takes care of transforming pawns, when they reach end of the board.
 def Transform(move):
     print("Select a letter to transform by (press either 'q' for queen, 'r' for rook,'n' for knight or 'b' bishop on the keyboard):")
     Button = pygame.key.get_pressed()
@@ -338,6 +328,7 @@ def Transform(move):
                     Finished = True
                     return "r"
 
+# Activates Helper function.
 def Helper(string, AI_is_white):
     turn = not AI_is_white
 
@@ -359,6 +350,7 @@ def Helper(string, AI_is_white):
                 Cboard.pop()
     return index
 
+# Maps pieces from letters to numbers, to allow Algorithm to compare against dataset trained.
 def Numbered_pieces(string):
     Numbers = ["1","2","3","4","5","6","7","8","9","0"]
     dictionary = { "p" : 1, "r" : 2, "n" : 3, "b" : 4, "q" : 5, "k" : 6, "P" : -1, "R" : -2, "N" : -3, "B" : -4, "Q" : -5, "K" : -6 }
@@ -377,6 +369,7 @@ def Numbered_pieces(string):
             Num_grid.append(dictionary[piece])
     return Num_grid
 
+# Produces game ppver screen.
 def Game_over_screen(Reason):
     gameDisplay.fill(white)
     
@@ -395,7 +388,8 @@ def Game_over_screen(Reason):
         pygame.display.update()
         quit()
 
-        
+
+# Displays first 2 screes (difficulty and turn choice).
 def Menu_Display(): # The function displays the first 2 screens of the game.
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
@@ -496,7 +490,8 @@ def Menu_Display(): # The function displays the first 2 screens of the game.
 
     return Difficulty, AI_is_white # The 2 parameters selected by the user are returned to the main program.
                 
-                 
+
+#Used to create letters on the boards.     
 def Create_Text(Text,x,y,size,color):
     largeText = pygame.font.Font('freesansbold.ttf',size)
     TextSurf, TextRect = text_objects(Text, largeText, color)
@@ -526,8 +521,8 @@ gameDisplay = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption('Chess')
 clock = pygame.time.Clock()
 
-
-Alpha = [["a8","b8","c8","d8","e8","f8","g8","h8"],   #How the squares are represented in the chess board.
+#How the squares are represented in the chess board.
+Alpha = [["a8","b8","c8","d8","e8","f8","g8","h8"],   
              ["a7","b7","c7","d7","e7","f7","g7","h7"],
              ["a6","b6","c6","d6","e6","f6","g6","h6"],
              ["a5","b5","c5","d5","e5","f5","g5","h5"],
