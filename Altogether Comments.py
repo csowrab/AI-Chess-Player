@@ -3,7 +3,8 @@ import sklearn
 from sklearn.neural_network import MLPClassifier
 import chess
 import pickle
-from pygame.locals import * 
+from pygame.locals import *
+
 UPPER = "RNBKQP"
 LOWER = "rnbkqp"
 
