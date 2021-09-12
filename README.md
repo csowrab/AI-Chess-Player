@@ -3,6 +3,9 @@
 
 A chess game made through Pygame and Scikit-learn. Main focus of the coursework is on the "AI" of the game, allowing you to face it in 3 difficulties.
 
+"AiChessGame" is the actual python file, running this (along with its import dependencies) should run the game.
+"MLP_NET" JSON files are the actual AIs, each of different difficulties to load to the game.
+
 ## Demo:
 
 ### Mid-game Explanation:
