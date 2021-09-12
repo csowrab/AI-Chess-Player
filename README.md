@@ -17,11 +17,11 @@ A chess game made through Pygame and Scikit-learn. Main focus of the coursework 
 
 ![In-Game screenshot](/Screenshots/HelperDemo.jpeg)
 
-Capital letters are white pieces, rest are black pieces 
-
 **(P = pawn, Q = queen, R = rook, K = king, N = knight, B = bishop)**
 
-Green squares notifies the player where the piece can move,the blue square is the place "suggested"  by the algorithm.
+* Capital letters are white pieces, others are black pieces. 
+* Green squares notifies the player where the piece can move.
+* The blue square is the place "suggested"  by the algorithm.
 
 ### Menu:
 Program starts by asking the player which difficulty to play at:
