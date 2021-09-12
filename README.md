@@ -30,4 +30,4 @@ Program starts by asking the player which difficulty to play at:
 Then asks which colour to play as:
 ![Difficult](/Screenshots/TurnChoice.jpeg)
 
-##Executable version coming soon! :)
+## Executable version coming soon! :)
